@@ -1,6 +1,6 @@
 module LabeledRange
   class BaseDefault
-    attr_reader :value
+    attr_reader :value, :level
 
     def initialize(value)
       @value = value
@@ -8,10 +8,7 @@ module LabeledRange
       definitions = { good: 0, warning: 0.7, danger: 0.9 }
       max = 1
 
-      thresholds = definitions.values.sort
-      thresholds.push(max)
-
-      @@ranges = thresholds.each_cons(2).each_with_object({}) do |(lower, upper), ranges|
+      (definitions.values.sort + [max]).each_cons(2).each_with_object({}) do |(lower, upper), ranges|
         range = lower..upper
         key = definitions.key(lower)
 
@@ -21,18 +18,10 @@ module LabeledRange
           end
         end
 
-        ranges[key] = range
-      end
-    end
-
-    def level
-      unless defined?(@level)
-        @@ranges.each do |key, range|
-          @level =  key if range === value
-        end
+        @level = key if range === value
       end
 
-      @level || :undefined
+      @level ||= :undefined
     end
   end
 end
