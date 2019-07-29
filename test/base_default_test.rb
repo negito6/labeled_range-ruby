@@ -6,9 +6,9 @@ describe LabeledRange::BaseDefault.name do
   end
 
   it 'working' do
-    assert @var.value.must_equal 0.8
-    assert @var.warning?.must_equal true
-    assert @var.danger?.must_equal false
-    assert @var.level.must_equal :warning
+    assert @disk_usage.value.must_equal 0.8
+    assert @disk_usage.warning?.must_equal true
+    assert @disk_usage.danger?.must_equal false
+    assert @disk_usage.level.must_equal :warning
   end
 end
