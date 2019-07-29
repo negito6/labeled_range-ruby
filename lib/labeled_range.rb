@@ -1,2 +1,2 @@
 require "labeled_range/version"
-require "labeled_range/base_default"
+require "labeled_range/value/default"

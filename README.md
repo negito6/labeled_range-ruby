@@ -21,7 +21,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-v = LabeledRange::BaseDefault.new(0.8)
+v = LabeledRange::Value::Default.new(0.8)
 
 v.warning? # => true
 v.danger?  # => false

@@ -1,8 +1,8 @@
 require 'helper'
 
-describe LabeledRange::BaseDefault.name do
+describe LabeledRange::Value::Default.name do
   before do
-    @var = LabeledRange::BaseDefault.new(0.8)
+    @disk_usage = LabeledRange::Value::Default.new(0.8)
   end
 
   it 'working' do
